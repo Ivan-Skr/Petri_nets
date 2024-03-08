@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"> 
-        <link type="text/css" rel="stylesheet" href="style.css" media="all" />
+        <link type="text/css" rel="stylesheet" href="../static/css/style.css" media="all" />
     </head>
     <body>
         <div class="gradient-background">
@@ -34,11 +34,11 @@
                           <span></span>
                           
                           <ul id="menu">
-                            <a href="index.html"><li>Главная</li></a>
-                            <a href="simulator.html"><li>Симулятор</li></a>
-                            <a href="instruction.html"><li>Инструкция к симулятору</li></a>
-                            <a href="theory.html"><li>Теория</li></a>
-                            <a href="#"><li>Задания</li></a>
+                            <a href="{{url_for('index')}}"><li>Главная</li></a>
+                            <a href="{{url_for('simulator')}}"><li>Симулятор</li></a>
+                            <a href="{{url_for('instruction')}}"><li>Инструкция к симулятору</li></a>
+                            <a href="{{url_for('theory')}}"><li>Теория</li></a>
+                            <a href="{{url_for('tasks', task_num = 1)}}"><li>Задания</li></a>
                           </ul>
                         </div>
                       </nav>

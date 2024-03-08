@@ -2,14 +2,19 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"> 
-        <link type="text/css" rel="stylesheet" href="style.css" media="all" />
+        <link type="text/css" rel="stylesheet" href="../static/css/style.css" media="all" />
     </head>
     <body>
         <div class="gradient-background">
             <div class="d-flex flex-column justify-content-center w-100 h-100">
                <div class="d-flex flex-column justify-content-center align-items-center">
                  <div class="btn-group my-5">
-                  <h1 style="top: -3%; left: 400px;;">Симулятор Сетей Петри</h1>
+                    <h1 style="top: 350px; left: 75px;;">Сети Петри</h1>
+                    <h1 style="top: 0%; left: 50%;;">Карл Адам Петри</h1>
+                    <img src="../static/img/carl_adam_petri.jpg" style="position: absolute; left: 30%; top: 15%;">
+
+
+
                     <nav role="navigation">
                         <div id="menuToggle">
                           
@@ -19,18 +24,16 @@
                           <span></span>
                           
                           <ul id="menu">
-                            <a href="index.html"><li>Главная</li></a>
-                            <a href="simulator.html"><li>Симулятор</li></a>
-                            <a href="instruction.html"><li>Инструкция к симулятору</li></a>
-                            <a href="theory.html"><li>Теория</li></a>
-                            <a href="#"><li>Задания</li></a>
+                            <a href="{{url_for('index')}}"><li>Главная</li></a>
+                            <a href="{{url_for('simulator')}}"><li>Симулятор</li></a>
+                            <a href="{{url_for('instruction')}}"><li>Инструкция к симулятору</li></a>
+                            <a href="{{url_for('theory')}}"><li>Теория</li></a>
+                            <a href="{{url_for('tasks', task_num = 1)}}"><li>Задания</li></a>
                           </ul>
                         </div>
                       </nav>
-                      
-                      <div style="left: 300px; top: 12%; position: absolute;">
-                        <iframe src="http://localhost:8000/" style="width: 950px;;height:712.5px;"></iframe>
-                      </div>
+
+
 
                  </div>
                </div>
