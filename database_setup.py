@@ -14,6 +14,7 @@ class Task(Base):
     img = Column(String(250), nullable=False)
     iterations = Column(Integer)
     answers = Column(String(250), nullable=False)
+    sets = Column(Integer)
 
 
 engine = create_engine('sqlite:///main.db')

@@ -10,8 +10,77 @@
                <div class="d-flex flex-column justify-content-center align-items-center">
                  <div class="btn-group my-5">
                     <h1 style="top: 0%; left: 40%;;">Задания</h1>
-                    <img src="{{task.img}}" width = "800" height="480" style="position: absolute; left: 40%; top: 15%;">
-                    <p style="position: absolute; left: 10%; top: 15%;">X0 = {{task.x0}}</p>
+                    <form class="login_form" method="post">
+                    
+
+
+                    
+                    <!--<img src="{{task.img}}" width = "800" height="480" style="position: absolute; left: 40%; top: 15%;">
+                    <p style="position: absolute; left: 10%; top: 15%;">X0 = {{task.x0}}</p>-->
+
+                    {% if task == 0 %}
+                      <a href="{{url_for('tasks', task_num = 1)}}"><h1 style="position: absolute; left: 40%; top: 35%;">НАЧАТЬ</h1></a>
+                    {% else %}
+                      <img src="{{task.img}}" width = "800" height="480" style="position: absolute; left: 40%; top: 15%;">
+                      <div style="padding-top: 100px;">
+                      <ul style="list-style-type: ''; margin-top: 0px;">
+                      {% for n in listt %}
+                        {% if loop.first %}
+                          <li style="line-height: 50px;"><p style="position: absolute; left: 10%;">X0 = {{task.x0}}</p></li>
+                        {% else %}
+                          <li style="line-height: 50px;"><p style="position: absolute; left: 10%;">X{{ loop.index-1 }} = [</p></li>
+                          {% set num = loop.index %}
+                          {% for m in listt %}
+                            {% if loop.first %}
+                            <div class="form-group" style="display:inline-block; margin-left: 200px;">
+                              <select class="form-control" id="classSelect" name="class{{num}}-{{loop.index}}">
+                                <option>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                              </select>
+                            </div>
+                            {% else %}
+                            <div class="form-group" style="display:inline-block;">
+                              <select class="form-control" id="classSelect" name="class{{num}}-{{loop.index}}">
+                                <option>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                              </select>
+                            </div>
+                            {% endif %}
+                          {% endfor %}
+                        {% endif %}
+                      {% endfor %}
+                      </ul>
+                      </div>
+                    
+                    <button type="submit" class="button" style="position: absolute; left: 150px; bottom: 10%;">Отправить</button>
+                    <a style="position: absolute; left: 350px; bottom: 23%;" href="{{url_for('tasks', task_num = task.id+1)}}"><h1>Далее</h1></a>
+
+                        <!--<div class="form-group" style="position: absolute; left: 16%; top: 25%;">
+                          <select class="form-control" id="classSelect" name="class" style="height: 30px;">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                          </select>
+                      </div>
+                      <div class="form-group" style="position: absolute; left: 20%; top: 25%;">
+                        <select class="form-control" id="classSelect" name="class" style="height: 30px;">
+                          <option>0</option>
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                        </select>
+                    </div>-->
+                   
+                    {% endif %}
 
 
 
@@ -28,10 +97,11 @@
                             <a href="{{url_for('simulator')}}"><li>Симулятор</li></a>
                             <a href="{{url_for('instruction')}}"><li>Инструкция к симулятору</li></a>
                             <a href="{{url_for('theory')}}"><li>Теория</li></a>
-                            <a href="{{url_for('tasks', task_num = 1)}}"><li>Задания</li></a>
+                            <a href="{{url_for('tasks', task_num = 0)}}"><li>Задания</li></a>
                           </ul>
                         </div>
                       </nav>
+                  </form>
 
 
 
