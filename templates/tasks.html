@@ -19,7 +19,51 @@
                     <p style="position: absolute; left: 10%; top: 15%;">X0 = {{task.x0}}</p>-->
 
                     {% if task == 0 %}
-                      <a href="{{url_for('tasks', task_num = 1)}}"><h1 style="position: absolute; left: 40%; top: 35%;">НАЧАТЬ</h1></a>
+                      <a href="{{url_for('tasks', task_num = 1)}}"><h1 style="position: absolute; left: 40%; top: 65%;">НАЧАТЬ</h1></a>
+                      <input style="position: absolute; left: 42%; top: 35%;" type="name" class="form-control" id="name" placeholder="Введите Ваше имя" name="name">
+                      <button type="submit_name" class="button" style="position: absolute; left: 42%; top: 45%;">Отправить</button>
+
+
+                      <nav role="navigation">
+                        <div id="menuToggle">
+                          
+                          <input type="checkbox" />
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          
+                          <ul id="menu">
+                            <a href="{{url_for('index')}}"><li>Главная</li></a>
+                            <a href="{{url_for('simulator')}}"><li>Симулятор</li></a>
+                            <a href="{{url_for('instruction')}}"><li>Инструкция к симулятору</li></a>
+                            <a href="{{url_for('theory')}}"><li>Теория</li></a>
+                            <a href="{{url_for('tasks', task_num = 0)}}"><li>Задания</li></a>
+                          </ul>
+                        </div>
+                      </nav>
+
+                    {% elif task == 100 %}
+                      <h1 style="position: absolute; left: 30%; top: 45%;">Ваш результат: </h1>
+
+
+                      <nav role="navigation">
+                        <div id="menuToggle">
+                          
+                          <input type="checkbox" />
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                          
+                          <ul id="menu">
+                            <a href="{{url_for('index')}}"><li>Главная</li></a>
+                            <a href="{{url_for('simulator')}}"><li>Симулятор</li></a>
+                            <a href="{{url_for('instruction')}}"><li>Инструкция к симулятору</li></a>
+                            <a href="{{url_for('theory')}}"><li>Теория</li></a>
+                            <a href="{{url_for('tasks', task_num = 0)}}"><li>Задания</li></a>
+                          </ul>
+                        </div>
+                      </nav>
+                      
                     {% else %}
                       <img src="{{task.img}}" width = "800" height="480" style="position: absolute; left: 40%; top: 15%;">
                       <div style="padding-top: 100px;">
@@ -83,24 +127,6 @@
                     {% endif %}
 
 
-
-                    <nav role="navigation">
-                        <div id="menuToggle">
-                          
-                          <input type="checkbox" />
-                          <span></span>
-                          <span></span>
-                          <span></span>
-                          
-                          <ul id="menu">
-                            <a href="{{url_for('index')}}"><li>Главная</li></a>
-                            <a href="{{url_for('simulator')}}"><li>Симулятор</li></a>
-                            <a href="{{url_for('instruction')}}"><li>Инструкция к симулятору</li></a>
-                            <a href="{{url_for('theory')}}"><li>Теория</li></a>
-                            <a href="{{url_for('tasks', task_num = 0)}}"><li>Задания</li></a>
-                          </ul>
-                        </div>
-                      </nav>
                   </form>
 
 

@@ -9,12 +9,12 @@ Base = declarative_base()
 class Task(Base):
     __tablename__ = 'tasks'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, nullable=False)
     x0 = Column(String(250), nullable=False)
     img = Column(String(250), nullable=False)
-    iterations = Column(Integer)
+    iterations = Column(Integer, nullable=False)
     answers = Column(String(250), nullable=False)
-    sets = Column(Integer)
+    sets = Column(Integer, nullable=False)
 
 
 engine = create_engine('sqlite:///main.db')

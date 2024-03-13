@@ -39,29 +39,36 @@ def theory():
 
 @app.route('/tasks/<task_num>/', methods=['POST', 'GET'])
 def tasks(task_num):
-    if request.method == 'GET':
+    if request.method == 'POST':
         if task_num == '0':
+            name = request.form['name']
+            print(name)
             return render_template('tasks.html', task = 0)
         else:
             get_tasks = session.query(Task).all()
             task = get_tasks[int(task_num)-1]
             listt = list(range(0, task.iterations+1))
-            return render_template('tasks.html', task = task, listt=listt)
-    elif request.method == 'POST':
-        get_tasks = session.query(Task).all()
-        task = get_tasks[int(task_num)-1]
-        listt = list(range(0, task.iterations+1))
-        
-        answers = []
-        for _ in range(int(task.iterations)):
-            a = []
-            for _1 in range(int(task.sets)+1):
-                a.append(int(request.form[f'class{_+2}-{_1+1}']))
-            answers.append(a)
-        
-        print(answers)
-        return render_template('tasks.html', task = task, listt=listt)
+            
+            answers = []
+            for _ in range(int(task.iterations)):
+                a = []
+                for _1 in range(int(task.sets)):
+                    a.append(int(request.form[f'class{_+2}-{_1+1}']))
+                answers.append(a)
 
+            print(answers)
+            return render_template('tasks.html', task = task, listt=listt)
+    elif request.method == 'GET':
+        if task_num == '0':
+            return render_template('tasks.html', task = 0)
+        else:
+            get_tasks = session.query(Task).all()
+            try:
+                task = get_tasks[int(task_num)-1]
+                listt = list(range(0, task.iterations+1))
+                return render_template('tasks.html', task = task, listt=listt)
+            except Exception:
+                return render_template('tasks.html', task = 100)
 
 
 
@@ -77,4 +84,4 @@ if __name__ == '__main__':
     process1 = multiprocessing.Process(target = app_run)
     process2 = multiprocessing.Process(target = game_run)
     process1.start()
-    process2.start()
+    # process2.start()
