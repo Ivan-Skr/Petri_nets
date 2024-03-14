@@ -5,7 +5,7 @@ import multiprocessing
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database_setup import Base, Task
+from database_setup import Base, Task, User
 
 app = Flask(__name__)
 
@@ -37,12 +37,19 @@ def theory():
     return render_template('theory.html')
 
 
+name = ''
+result = 0
+get_tasks = session.query(Task).all()
+tasks_lenght = len(get_tasks)
+
+
 @app.route('/tasks/<task_num>/', methods=['POST', 'GET'])
 def tasks(task_num):
+    global name, result, result_procent
     if request.method == 'POST':
         if task_num == '0':
             name = request.form['name']
-            print(name)
+
             return render_template('tasks.html', task = 0)
         else:
             get_tasks = session.query(Task).all()
@@ -56,7 +63,10 @@ def tasks(task_num):
                     a.append(int(request.form[f'class{_+2}-{_1+1}']))
                 answers.append(a)
 
-            print(answers)
+            
+            if str(answers) == (task.answers):
+                result += 1
+
             return render_template('tasks.html', task = task, listt=listt)
     elif request.method == 'GET':
         if task_num == '0':
@@ -68,7 +78,10 @@ def tasks(task_num):
                 listt = list(range(0, task.iterations+1))
                 return render_template('tasks.html', task = task, listt=listt)
             except Exception:
-                return render_template('tasks.html', task = 100)
+                newUser = User(name=name, result=result, result_procent=(100/tasks_lenght)*result)
+                session.add(newUser)
+                session.commit()
+                return render_template('tasks.html', task = 100, result = result, lenght = tasks_lenght, result_procent = (100/tasks_lenght)*result)
 
 
 

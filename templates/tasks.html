@@ -20,8 +20,8 @@
 
                     {% if task == 0 %}
                       <a href="{{url_for('tasks', task_num = 1)}}"><h1 style="position: absolute; left: 40%; top: 65%;">НАЧАТЬ</h1></a>
-                      <input style="position: absolute; left: 42%; top: 35%;" type="name" class="form-control" id="name" placeholder="Введите Ваше имя" name="name">
-                      <button type="submit_name" class="button" style="position: absolute; left: 42%; top: 45%;">Отправить</button>
+                      <input style="position: absolute; left: 42%; top: 35%;" type="name" class="form-control" id="name" placeholder="Введите Ваше ФИО" name="name">
+                      <button type="submit_name" class="button" style="position: absolute; left: 43%; top: 45%;">Отправить</button>
 
 
                       <nav role="navigation">
@@ -43,7 +43,7 @@
                       </nav>
 
                     {% elif task == 100 %}
-                      <h1 style="position: absolute; left: 30%; top: 45%;">Ваш результат: </h1>
+                      <h1 style="position: absolute; left: 30%; top: 45%;">Ваш результат: {{result}}/{{lenght}} ({{result_procent}}%)</h1>
 
 
                       <nav role="navigation">
