@@ -19,9 +19,8 @@
                     <p style="position: absolute; left: 10%; top: 15%;">X0 = {{task.x0}}</p>-->
 
                     {% if task == 0 %}
-                      <a href="{{url_for('tasks', task_num = 1)}}"><h1 style="position: absolute; left: 40%; top: 65%;">НАЧАТЬ</h1></a>
                       <input style="position: absolute; left: 42%; top: 35%;" type="name" class="form-control" id="name" placeholder="Введите Ваше ФИО" name="name">
-                      <button type="submit_name" class="button" style="position: absolute; left: 43%; top: 45%;">Отправить</button>
+                      <button type="submit_name" class="button" style="position: absolute; left: 43%; top: 45%;">НАЧАТЬ</button>
 
 
                       <nav role="navigation">
@@ -38,6 +37,7 @@
                             <a href="{{url_for('instruction')}}"><li>Инструкция к симулятору</li></a>
                             <a href="{{url_for('theory')}}"><li>Теория</li></a>
                             <a href="{{url_for('tasks', task_num = 0)}}"><li>Задания</li></a>
+                            <a href="{{url_for('results')}}"><li>Результаты</li></a>
                           </ul>
                         </div>
                       </nav>
@@ -60,6 +60,7 @@
                             <a href="{{url_for('instruction')}}"><li>Инструкция к симулятору</li></a>
                             <a href="{{url_for('theory')}}"><li>Теория</li></a>
                             <a href="{{url_for('tasks', task_num = 0)}}"><li>Задания</li></a>
+                            <a href="{{url_for('results')}}"><li>Результаты</li></a>
                           </ul>
                         </div>
                       </nav>
@@ -74,7 +75,7 @@
                         {% else %}
                           <li style="line-height: 50px;"><p style="position: absolute; left: 10%;">X{{ loop.index-1 }} = [</p></li>
                           {% set num = loop.index %}
-                          {% for m in listt %}
+                          {% for m in listt2 %}
                             {% if loop.first %}
                             <div class="form-group" style="display:inline-block; margin-left: 200px;">
                               <select class="form-control" id="classSelect" name="class{{num}}-{{loop.index}}">
@@ -102,8 +103,7 @@
                       </ul>
                       </div>
                     
-                    <button type="submit" class="button" style="position: absolute; left: 150px; bottom: 10%;">Отправить</button>
-                    <a style="position: absolute; left: 350px; bottom: 23%;" href="{{url_for('tasks', task_num = task.id+1)}}"><h1>Далее</h1></a>
+                    <button type="submit" class="button" style="position: absolute; left: 150px; bottom: 10%;">Далее</button>
 
                         <!--<div class="form-group" style="position: absolute; left: 16%; top: 25%;">
                           <select class="form-control" id="classSelect" name="class" style="height: 30px;">

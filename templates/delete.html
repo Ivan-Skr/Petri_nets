@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"> 
+        <link type="text/css" rel="stylesheet" href="../../static/css/style.css" media="all" />
+    </head>
+    <body>
+        <div class="gradient-background">
+            <div class="d-flex flex-column justify-content-center w-100 h-100">
+               <div class="d-flex flex-column justify-content-center align-items-center">
+                 <div class="btn-group my-5">
+
+                    <p>Вы уверены, что хотите удалить {{name}} из списка резутатов?</p>
+                    <form action="#" method='post' style="position: absolute; margin-top: 100px;">
+                        <button type="submit" class="button">Да</button>
+                    </form>
+                    <a href="{{url_for('results')}}" style="position: absolute; margin-top: 100px; margin-left: 100px;">
+                        <button class="button">Нет</button>
+                    </a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+   </body>
+</html>

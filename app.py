@@ -1,4 +1,4 @@
-from flask import Flask, render_template, json, request
+from flask import Flask, render_template, json, request, redirect, url_for
 import os
 import multiprocessing
 
@@ -37,6 +37,32 @@ def theory():
     return render_template('theory.html')
 
 
+@app.route('/<name>/delete/', methods=['POST', 'GET'])
+def delete(name):
+    deleteUser = session.query(User).filter_by(name=name).one()
+    if request.method == 'POST':
+        session.delete(deleteUser)
+        session.commit()
+        return redirect(url_for('results'))
+    else:
+        return render_template('delete.html', name=name)
+
+
+@app.route('/results')
+def results():
+    users = session.query(User).all()
+    us = []
+    for _ in users:
+        us.append((_.id, _.name, _.result, _.result_procent))
+    us.sort(key=lambda x: x[2], reverse=True)
+
+    users_updated = []
+    for _ in range(len(us)):
+        users_updated.append(User(name=us[_][1], result=us[_][2], result_procent=us[_][3]))
+
+    return render_template('results.html', users = users_updated, lenght = tasks_lenght)
+
+
 name = ''
 result = 0
 get_tasks = session.query(Task).all()
@@ -50,7 +76,7 @@ def tasks(task_num):
         if task_num == '0':
             name = request.form['name']
 
-            return render_template('tasks.html', task = 0)
+            return redirect(url_for("tasks", task_num=1))
         else:
             get_tasks = session.query(Task).all()
             task = get_tasks[int(task_num)-1]
@@ -67,7 +93,7 @@ def tasks(task_num):
             if str(answers) == (task.answers):
                 result += 1
 
-            return render_template('tasks.html', task = task, listt=listt)
+            return redirect(url_for("tasks", task_num=task.id+1))
     elif request.method == 'GET':
         if task_num == '0':
             return render_template('tasks.html', task = 0)
@@ -76,7 +102,8 @@ def tasks(task_num):
             try:
                 task = get_tasks[int(task_num)-1]
                 listt = list(range(0, task.iterations+1))
-                return render_template('tasks.html', task = task, listt=listt)
+                listt2 = list(range(0, task.sets))
+                return render_template('tasks.html', task = task, listt=listt, listt2=listt2)
             except Exception:
                 newUser = User(name=name, result=result, result_procent=(100/tasks_lenght)*result)
                 session.add(newUser)
@@ -97,4 +124,5 @@ if __name__ == '__main__':
     process1 = multiprocessing.Process(target = app_run)
     process2 = multiprocessing.Process(target = game_run)
     process1.start()
-    # process2.start()
+    process2.start()
+    # TODO fix main code (sort 1-"-", 2-"+")

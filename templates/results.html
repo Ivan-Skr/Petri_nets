@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"> 
+        <link type="text/css" rel="stylesheet" href="../../static/css/style.css" media="all" />
+    </head>
+    <body>
+        <div class="gradient-background">
+            <div class="d-flex flex-column justify-content-center w-100 h-100">
+               <div class="d-flex flex-column justify-content-center align-items-center">
+                 <div class="btn-group my-5">
+                    <h1 style="top: 0%; left: 35%;;">Результаты</h1>
+                    <form class="login_form" method="post">
+
+                        <nav role="navigation">
+                          <div id="menuToggle">
+                            
+                            <input type="checkbox" />
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            
+                            <ul id="menu">
+                              <a href="{{url_for('index')}}"><li>Главная</li></a>
+                              <a href="{{url_for('simulator')}}"><li>Симулятор</li></a>
+                              <a href="{{url_for('instruction')}}"><li>Инструкция к симулятору</li></a>
+                              <a href="{{url_for('theory')}}"><li>Теория</li></a>
+                              <a href="{{url_for('tasks', task_num = 0)}}"><li>Задания</li></a>
+                              <a href="{{url_for('results')}}"><li>Результаты</li></a>
+                            </ul>
+                          </div>
+                        </nav>
+                    
+                    </form>
+
+                    <div style="padding-top: 100px;">
+                    <ul style="list-style-type: ''; margin-top: 0px;">
+                        {% for user in users %}
+                          <div class="form-group">
+                            <li style="line-height: 50px;"><p style="position: absolute; left: 10%;">{{user.name}} — {{user.result}}/{{lenght}} ({{user.result_procent}}%) <a href="{{url_for('delete', name=user.name)}}" style="text-decoration: none;">🧹</a></p></li>
+                          </div>
+                        {% endfor %}
+                    </ul>
+                    </div>
+
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+   </body>
+</html>
