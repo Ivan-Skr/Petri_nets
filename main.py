@@ -44,6 +44,7 @@ def save(rects, lines, circles):
                                     circles[_3][3]:
                                 metks.append(flags[_4])
                         local_list.append([circles[_3], p[1], metks])
+            local_list.sort(key=lambda x: x[1], reverse=True)
             t_and_p[f't{_1}'] = local_list
     print('\n\n\n\n')
     print(t_and_p)

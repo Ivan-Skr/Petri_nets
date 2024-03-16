@@ -105,7 +105,9 @@ def tasks(task_num):
                 listt2 = list(range(0, task.sets))
                 return render_template('tasks.html', task = task, listt=listt, listt2=listt2)
             except Exception:
-                newUser = User(name=name, result=result, result_procent=(100/tasks_lenght)*result)
+                if name == '':
+                    return render_template('tasks.html', task = 100, result = result, lenght = tasks_lenght, result_procent = (100/tasks_lenght)*result)
+                newUser = User(name=name, result=result, result_procent=(100/tasks_lenght)*result, username=os.environ.get( "USERNAME" ))
                 session.add(newUser)
                 session.commit()
                 return render_template('tasks.html', task = 100, result = result, lenght = tasks_lenght, result_procent = (100/tasks_lenght)*result)
@@ -125,4 +127,3 @@ if __name__ == '__main__':
     process2 = multiprocessing.Process(target = game_run)
     process1.start()
     process2.start()
-    # TODO fix main code (sort 1-"-", 2-"+")

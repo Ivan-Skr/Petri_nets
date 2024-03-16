@@ -32,7 +32,7 @@ def save(rects, lines, circles):
         for _1 in range(1, len(t_and_l_in_p) + 1):
             a = t_and_l_in_p[f't{_1}']
             local_list = []
-            print(a)
+            # print(a)
             for _2 in range(len(a)):
                 p = a[_2]
                 metks = []
@@ -43,9 +43,12 @@ def save(rects, lines, circles):
                                     circles[_3][3]:
                                 metks.append(flags[_4])
                         local_list.append([circles[_3], p[1], metks])
+            local_list.sort(key=lambda x: x[1], reverse=True)
             t_and_p[f't{_1}'] = local_list
-    print('\n\n\n\n')
-    print(t_and_p)
+            # print(local_list, end="\n\n\n\n")
+            # print(local_list)
+    # print('\n\n\n\n')
+    # print(t_and_p)
     return t_and_p
 
 

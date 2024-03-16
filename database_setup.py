@@ -24,6 +24,7 @@ class User(Base):
     name = Column(String(250), nullable=False)
     result = Column(Integer, nullable=False)
     result_procent = Column(Integer, nullable=False)
+    username = Column(String(250), nullable=False)
 
 
 engine = create_engine('sqlite:///main.db')
