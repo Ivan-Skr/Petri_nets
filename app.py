@@ -53,12 +53,12 @@ def results():
     users = session.query(User).all()
     us = []
     for _ in users:
-        us.append((_.id, _.name, _.result, _.result_procent))
+        us.append((_.id, _.name, _.result, _.result_procent, _.username))
     us.sort(key=lambda x: x[2], reverse=True)
 
     users_updated = []
     for _ in range(len(us)):
-        users_updated.append(User(name=us[_][1], result=us[_][2], result_procent=us[_][3]))
+        users_updated.append(User(name=us[_][1], result=us[_][2], result_procent=us[_][3], username=us[_][4]))
 
     return render_template('results.html', users = users_updated, lenght = tasks_lenght)
 
@@ -126,4 +126,4 @@ if __name__ == '__main__':
     process1 = multiprocessing.Process(target = app_run)
     process2 = multiprocessing.Process(target = game_run)
     process1.start()
-    process2.start()
+    # process2.start()

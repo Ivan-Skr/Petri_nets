@@ -3,6 +3,8 @@
     <head>
         <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"> 
         <link type="text/css" rel="stylesheet" href="../../static/css/style.css" media="all" />
+
+
     </head>
     <body>
         <div class="gradient-background" style="height: 5000px;">
@@ -37,11 +39,12 @@
                     <ul style="list-style-type: ''; margin-top: 0px;">
                         {% for user in users %}
                           <div class="form-group">
-                            <li style="line-height: 50px;"><p style="position: absolute; left: 10%;">{{user.name}} — {{user.result}}/{{lenght}} ({{user.result_procent}}%) <a href="{{url_for('delete', name=user.name)}}" style="text-decoration: none;">🧹</a></p></li>
+                            <li style="line-height: 50px;"><p style="position: absolute; left: 20%;"><span data-tooltip="{{user.username}}">{{user.name}}</span> — {{user.result}}/{{lenght}} ({{user.result_procent}}%) <a href="{{url_for('delete', name=user.name)}}" style="text-decoration: none;">🧹</a></p></li>
                           </div>
                         {% endfor %}
                     </ul>
                     </div>
+
 
 
 

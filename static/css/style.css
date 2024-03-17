@@ -203,10 +203,13 @@ span {
   span::after {
     /*  ---  */
     content: attr(data-tooltip);
-    /*  ---  */
-    position: absolute;
+    /*  position: absolute;
     top: -40px;
-    left: 375px;
+    left: 375px;  */
+
+    
+    position: absolute;
+    left: -200px;
     color: rgb(60, 113, 187); 
     text-shadow: 1px 0 #2980B9, 
                 0 -1px #2980B9, 
@@ -223,37 +226,64 @@ span {
 
 
 
+.instruction {
+  color: #1266f1;
+  position: relative;
+  cursor: pointer;
+}
+
+.instruction::after {
+  /*  ---  */
+  content: attr(data-tooltip);
+  position: absolute;
+  top: -40px;
+  left: 375px;
+  color: rgb(60, 113, 187); 
+  text-shadow: 1px 0 #2980B9, 
+              0 -1px #2980B9, 
+              -1px 0 #2980B9, 
+              0 1px #2980B9;
+  opacity: 0;
+  transition: 0.2s;
+}
+.instruction:hover::after {
+  opacity: 1;
+}
 
 
 
-  .button {
-    background-color: #003678;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  }
 
-  .button:focus {
-    background-color: #4c72a0;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  }
+
+
+
+.button {
+  background-color: #003678;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button:focus {
+  background-color: #4c72a0;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
