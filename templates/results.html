@@ -3,7 +3,11 @@
     <head>
         <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"> 
         <link type="text/css" rel="stylesheet" href="../../static/css/style.css" media="all" />
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
 
     </head>
     <body>
@@ -11,6 +15,25 @@
             <div class="d-flex flex-column justify-content-center w-100 h-100">
                <div class="d-flex flex-column justify-content-center align-items-center">
                  <div class="btn-group my-5">
+
+                  {% if alert == 1 %}
+                  <label>
+                    <input type="checkbox" class="alertCheckbox" autocomplete="off" />
+                      <div class="alert error" id="top-alert" style="margin-top: 0px;">
+                        <span class="alertText" style="color: #1266f1;">У Вас недостаточно прав для выполнения этого действия
+                        <br class="clear"/></span>
+                      </div>
+                    </label>
+                      
+                  <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                      setTimeout(() => {
+                        const alert = bootstrap.Alert.getOrCreateInstance('#top-alert');
+                        alert.close();
+                      }, 3500);
+                    });
+                  </script>
+                  {% endif %}
                     <h1 style="top: 0%; left: 35%;;">Результаты</h1>
                     <form class="login_form" method="post">
 
@@ -45,8 +68,7 @@
                     </ul>
                     </div>
 
-
-
+                    
 
                 </div>
               </div>

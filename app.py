@@ -37,19 +37,29 @@ def theory():
     return render_template('theory.html')
 
 
+alert = 0
+
 @app.route('/<name>/delete/', methods=['POST', 'GET'])
 def delete(name):
+    global alert
+    whitelist = ['User']                                          ######################################## Whitelist
     deleteUser = session.query(User).filter_by(name=name).one()
     if request.method == 'POST':
-        session.delete(deleteUser)
-        session.commit()
-        return redirect(url_for('results'))
+        if os.environ.get( "USERNAME" ) in whitelist:
+            session.delete(deleteUser)
+            session.commit()
+            alert = 0
+            return redirect(url_for('results'))
+        else:
+            alert = 1
+            return redirect(url_for('results'))
     else:
         return render_template('delete.html', name=name)
 
 
 @app.route('/results')
 def results():
+    global alert
     users = session.query(User).all()
     us = []
     for _ in users:
@@ -60,7 +70,7 @@ def results():
     for _ in range(len(us)):
         users_updated.append(User(name=us[_][1], result=us[_][2], result_procent=us[_][3], username=us[_][4]))
 
-    return render_template('results.html', users = users_updated, lenght = tasks_lenght)
+    return render_template('results.html', users = users_updated, lenght = tasks_lenght, alert=alert)
 
 
 name = ''
