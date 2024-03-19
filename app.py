@@ -1,13 +1,17 @@
-from flask import Flask, render_template, json, request, redirect, url_for
+from flask import Flask, render_template, json, request, redirect, url_for, send_from_directory
 import os
 import multiprocessing
+import openpyxl
 
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Task, User
 
+
+UPLOAD_FOLDER = 'upload_files'
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 engine = create_engine('sqlite:///main.db?check_same_thread=False')
 Base.metadata.bind = engine
@@ -70,7 +74,28 @@ def results():
     for _ in range(len(us)):
         users_updated.append(User(name=us[_][1], result=us[_][2], result_procent=us[_][3], username=us[_][4]))
 
+
+    workbook = openpyxl.load_workbook(filename="upload_files\petri_nets_results.xlsx")
+    sheet = workbook.worksheets[0]
+    sheet.delete_cols(1, 6)
+    
+    
+    for _ in range(1, len(us)+1):
+        for _1 in range(1, 5):
+            if _1 == 3:
+                sheet.cell(row=_, column=_1, value=str(us[_-1][_1])+'%')
+            else:
+                sheet.cell(row=_, column=_1, value=us[_-1][_1])
+
+
+    workbook.save("upload_files\petri_nets_results.xlsx")
+
     return render_template('results.html', users = users_updated, lenght = tasks_lenght, alert=alert)
+
+
+@app.route('/' + UPLOAD_FOLDER + '/<file_name>')
+def download(file_name):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], file_name, as_attachment=True)
 
 
 name = ''
