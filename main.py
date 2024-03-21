@@ -150,6 +150,7 @@ async def main():
                     elif event.key == pygame.K_RIGHT:
                         try:
                             counter = 0
+                            counter_2 = 0
                             a = save(rects, lines, circles)
                             iter_now += 1
                             b = a[f't{iter_now}']
@@ -158,10 +159,11 @@ async def main():
                             while iter_dots < max_iter_dots:
                                 c = b[iter_dots]
                                 if c[1] == '-':
+                                    counter_2 += 1
                                     if len(c[2]) > 0:
                                         flags.remove(c[2][0])
                                         counter += 1
-                                elif c[1] == '+' and counter > 0:
+                                elif c[1] == '+' and (counter > 0 or counter_2 == 0):
                                     flags.append([(c[0][0] + c[0][2]) / 2, (c[0][1] + c[0][3]) / 2])
                                 a = save(rects, lines, circles)
                                 '''pygame.draw.circle(screen, "black", ((c[0][0]+c[0][2])/2, (c[0][1]+c[0][3])/2), 25, 0)

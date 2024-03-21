@@ -23,21 +23,29 @@ session = DBSession()
 @app.route('/')
 @app.route('/index')
 def index():
+    global alert
+    alert = 0
     return render_template('index.html')
 
 
 @app.route('/training')
 def instruction():
+    global alert
+    alert = 0
     return render_template('instruction.html')
 
 
 @app.route('/simulator')
 def simulator():
+    global alert
+    alert = 0
     return render_template('simulator.html')
 
 
 @app.route('/theory')
 def theory():
+    global alert
+    alert = 0
     return render_template('theory.html')
 
 
@@ -46,7 +54,7 @@ alert = 0
 @app.route('/<name>/delete/', methods=['POST', 'GET'])
 def delete(name):
     global alert
-    whitelist = ['User']                                          ######################################## Whitelist
+    whitelist = ['User1']                                          ######################################## Whitelist
     deleteUser = session.query(User).filter_by(name=name).one()
     if request.method == 'POST':
         if os.environ.get( "USERNAME" ) in whitelist:
@@ -106,9 +114,12 @@ tasks_lenght = len(get_tasks)
 
 @app.route('/tasks/<task_num>/', methods=['POST', 'GET'])
 def tasks(task_num):
-    global name, result, result_procent
+    global name, result, alert
+    alert = 0
     if request.method == 'POST':
         if task_num == '0':
+            name = ''
+            result = 0
             name = request.form['name']
 
             return redirect(url_for("tasks", task_num=1))
@@ -161,4 +172,28 @@ if __name__ == '__main__':
     process1 = multiprocessing.Process(target = app_run)
     process2 = multiprocessing.Process(target = game_run)
     process1.start()
-    # process2.start()
+    process2.start()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+Сети Петри - это математическая модель, 
+используемая для описания и анализа параллельных 
+и распределенных систем. Они применяются в различных 
+областях, включая информационные технологии (моделирование 
+и анализ производственных процессов, сети передачи данных), 
+производственное управление (моделирование работы производственных линий), 
+биологию (моделирование биохимических процессов в клетках) и другие области, 
+где необходимо анализировать и управлять сложными системами.
+'''
