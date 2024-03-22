@@ -5,42 +5,54 @@
         <link type="text/css" rel="stylesheet" href="../static/css/style.css" media="all" />
     </head>
     <body>
-        <div class="gradient-background" style="height: 5000px;">
+        <div class="gradient-background" style="height: 3000px;">
             <div class="d-flex flex-column justify-content-center w-100 h-500">
                <div class="d-flex flex-column justify-content-center align-items-center">
                  <div class="btn-group my-5">
                   <h1 style="top: -10px; left: 600px;;">Теория</h1>
                   <p style="top: 140px; left: 200px;;">• Сеть Петри, также известная как сеть позиций/переходов (PT), является одним из 
                     нескольких языков математического моделирования для описания распределенных
-                    систем. Это класс дискретно-событийной динамической системы.</p>
+                    систем. Сети применяются в различных областях, включая информационные технологии (моделирование 
+                    и анализ производственных процессов, сети передачи данных), 
+                    производственное управление (моделирование работы производственных линий), 
+                    биологию (моделирование биохимических процессов в клетках) и другие области, 
+                    где необходимо анализировать и управлять сложными системами.</p>
                   
-                  <p style="top: 310px; left: 200px;;">• Сеть Петри представляет собой ориентированный двудольный граф, имеющий
+                  <p style="top: 460px; left: 200px;;">• Сеть Петри представляет собой ориентированный двудольный граф, имеющий
                     два типа элементов: позиции и переходы, изображенные в виде кружков
                     и прямоугольников соответственно. Позиция может содержать любое количество фишек,
                     обозначенных маленькими кружками. Переход разрешен, если все позиции,
                     подключенные к нему в качестве входов, содержат хотя бы одну фишку.
                     Переходы срабатывают по очереди в зависимости от их номеров</p>
 
-                  <p style="top: 600px; left: 200px;;">• Сети Петри были изобретены в августе 1939 года Карлом Адамом Петри
+                  <p style="top: 730px; left: 200px;;">• Сети Петри были изобретены в августе 1939 года Карлом Адамом Петри
                     в возрасте 13 лет с целью описания химических процессов.</p>
 
 
-                  <img src="../static/img/designations.png" width="600" height="480" style="position: absolute; top: 800px; left: 100px;">
-                  <img src="../static/img/rules.png" width="600" height="480" style="position: absolute; top: 800px; left: 800px;">
+                  <img src="../static/img/designations.png" width="600" height="480" style="position: absolute; top: 900px; left: 100px;">
+                  <img src="../static/img/rules.png" width="600" height="480" style="position: absolute; top: 900px; left: 800px;">
 
-                  <h1 style="top: 1400px; left: 600px;;">Пример</h1>
+                  <h1 style="top: 1400px; left: 540px;;">Пример (светофор)</h1>
 
-                  <p style="top: 1550px; left: 200px;;">Начальная сеть Петри (X0 = [2, 0, 0, 1]):</p>
-                  <img src="../static/img/0_iteration.png" style="position: absolute; top: 1650px; left: 200px;">
+                  <p style="top: 1550px; left: 200px;;">Начальная сеть Петри (X0 = [0, 0, 1]). 
+                    На светофоре горит тот цвет, в соответствующем множестве которого находится фишка. 
+                    Сейчас фишка находится в нижнем множестве, соответственно на светофоре горит зеленый свет.</p>
+                  <img src="../static/img/0_iteration.png" style="position: absolute; top: 1700px; left: 200px;">
 
-                  <p style="top: 2400px; left: 200px;;">Сеть Петри после 1 итерации (X1 = [1, 1, 1, 1]):</p>
-                  <img src="../static/img/1_iteration.png" style="position: absolute; top: 2500px; left: 200px;">
+                  <p style="top: 2100px; left: 200px;;">Сеть Петри после 1 итерации (X1 = [0, 1, 0]). 
+                    Фишка из нижнего множества перешла в центральное. Теперь в нижнем множестве пусто, а в центральном 
+                    множестве находится фишка, соответственно зеленый свет погас и желтый свет зажегся.</p>
+                  <img src="../static/img/1_iteration.png" style="position: absolute; top: 2250px; left: 200px;">
 
-                  <p style="top: 3250px; left: 200px;;">Сеть Петри после 2 итерации (X2 = [1, 1, 0, 2]):</p>
-                  <img src="../static/img/2_iteration.png" style="position: absolute; top: 3350px; left: 200px;">
+                  <p style="top: 2650px; left: 200px;;">Сеть Петри после 2 итерации (X2 = [1, 0, 0]). 
+                    Фишка из центрального множества перешла в верхнее. Теперь в центральное множестве пусто, а в верхнем 
+                    множестве находится фишка, соответственно желтый свет погас и красный свет зажегся.</p>
+                  <img src="../static/img/2_iteration.png" style="position: absolute; top: 2800px; left: 200px;">
 
-                  <p style="top: 4100px; left: 200px;;">Сеть Петри после 3 итерации (X3 = [0, 1, 0, 1]):</p>
-                  <img src="../static/img/3_iteration.png" style="position: absolute; top: 4200px; left: 200px;">
+                  <p style="top: 3200px; left: 200px;;">Сеть Петри после 3 итерации (X3 = [0, 0, 1]). 
+                    Фишка из верхнего множества перешла в нижнее. Теперь в верхнем множестве пусто, а в нижнем 
+                    множестве находится фишка, соответственно красный свет погас и зеленый свет зажегся.</p>
+                  <img src="../static/img/3_iteration.png" style="position: absolute; top: 3350px; left: 200px;">
 
                     <nav role="navigation">
                         <div id="menuToggle">
