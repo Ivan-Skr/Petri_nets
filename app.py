@@ -1,4 +1,4 @@
-from flask import Flask, render_template, json, request, redirect, url_for, send_from_directory
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 import os
 import multiprocessing
 import openpyxl
@@ -164,7 +164,7 @@ def app_run():
     app.run(port=8081, host='127.0.0.1')
 
 def game_run():
-    os.system('C:\\Users\\User\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\Scripts\\pygbag.exe C:\\Users\\User\\Desktop\\Petri_nets')
+    os.system('C:\\Users\\User\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\Scripts\\pygbag.exe --ume_block=0 C:\\Users\\User\\Desktop\\Petri_nets')
 
 
 
