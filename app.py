@@ -161,7 +161,7 @@ def tasks(task_num):
 
 
 def app_run():
-    app.run(port=8081, host='127.0.0.1')
+    app.run(port=8080, host='127.0.0.1')
 
 def game_run():
     os.system('C:\\Users\\User\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python311\\Scripts\\pygbag.exe --ume_block=0 C:\\Users\\User\\Desktop\\Petri_nets')
@@ -170,6 +170,6 @@ def game_run():
 
 if __name__ == '__main__':
     process1 = multiprocessing.Process(target = app_run)
-    process2 = multiprocessing.Process(target = game_run)
+    # process2 = multiprocessing.Process(target = game_run)
     process1.start()
-    process2.start()
+    # process2.start()
