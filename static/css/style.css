@@ -48,7 +48,7 @@ body {
 
 #menuToggle a:hover
 {
-  color: #ef3f5a;
+  color: #483bde;
 }
 
 
@@ -177,7 +177,7 @@ h1
 {
     position: absolute; 
     font-size: 4em; 
-    color: #ef3f5a;
+    color: #483bde;
 }
 
 p
@@ -189,7 +189,7 @@ p
 }
 
 span {
-    color: #ef3f5a;
+    color: #483bde;
     position: relative;
     cursor: pointer;
   }
@@ -217,7 +217,7 @@ span {
 
 
 .button {
-  background-color: #ef3f5a;
+  background-color: #483bde;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -252,8 +252,8 @@ span {
 
 .btn {
   background-color: transparent;
-  border: 3px solid #EF3F5A;
-  color: #EF3F5A;
+  border: 3px solid #483bde;
+  color: #483bde;
   float: left;
   letter-spacing: 1.5px;
   padding: 22px 45px 20px;
@@ -275,7 +275,7 @@ span {
 }
 
 .btn:hover {
-  background-color:#EF3F5A;
+  background-color:#483bde;
   color: #f6f6f6;
   transition: 0.3s;
 }
@@ -351,6 +351,6 @@ span {
 
 .error {
   background-color: #f6f6f6;
-  border: 1px solid #EF3F5A;
-  color: #EF3F5A;
+  border: 1px solid #483bde;
+  color: #483bde;
 }
