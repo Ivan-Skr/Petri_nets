@@ -54,7 +54,7 @@ alert = 0
 @app.route('/<name>/delete/', methods=['POST', 'GET'])
 def delete(name):
     global alert
-    whitelist = ['User1']                                          ######################################## Whitelist
+    whitelist = ['User']                                          ######################################## Whitelist
     deleteUser = session.query(User).filter_by(name=name).one()
     if request.method == 'POST':
         if os.environ.get( "USERNAME" ) in whitelist:
